@@ -1,0 +1,61 @@
+---
+title: "Time Series Practice - April 6th"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+To compute the sample PACF, we replace the theoretical ACF p's with the sample ACF r's
+
+AR(1) Example:
+Xt = 0.8Xt-1 + Et
+```{r}
+ar.sim = arima.sim(model = list(c(0.8)), n = 100)
+ts.plot(ar.sim)
+```
+
+To Calculate the ACF:
+```{r}
+ar.acf = acf(ar.sim, type = "correlation", plot = T, main = "ACF of AR(1)")
+```
+
+To Calculate the PACF:
+```{r}
+ar.pacf = pacf(ar.sim, plot = T, main = "PACF of AR(1)")
+```
+
+
+MA(1) Example:
+Xt = Et + 0.8Et-1
+```{r}
+ma.sim = arima.sim(model = list(c(0.8)), n = 100)
+plot.ts(ma.sim)
+```
+
+To Calculate the ACF:
+```{r}
+ma.acf = acf(ma.sim, type = "correlation", plot = T, , main = "PACF of MA(1)")
+```
+
+
+To Calculate the PACF:
+```{r}
+ma.pacf = pacf(ma.sim, plot = T, main = "PACF of MA(1)")
+```
+
+
+ARMA(2, 1) Example:
+Xt = 1.3Xt-1 - 0.4Xt-2 + Et + 0.4Et-1
+```{r}
+arma.sim = arima.sim(model = list(ar = c(1.3, -0.4), ma = c(0.4)), n = 100)
+ts.plot(arma.sim)
+```
+
+To Calculate the ACF and the PACF:
+```{r}
+par(mfrow = c(1, 2))
+arma.acf = acf(arma.sim, type = "correlation", plot = T, main = "ACF of ARMA(2,1)")
+arima.pacf = pacf(arma.sim, plot = T, main = "PACF of ARMA(2,1)")
+```
+
+
