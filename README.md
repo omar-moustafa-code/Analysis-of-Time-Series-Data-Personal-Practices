@@ -8,7 +8,6 @@ The practices focus on core time series analysis methods, including:
 *   **Moving Averages**: Smoothing data to identify trends.
 *   **Filters**: Applying various filters to extract signals from noise.
 *   **Decompositions**: Breaking down a time series into its trend, seasonal, and residual components.
-*   **ARIMA Modeling** (implied): Likely practiced as part of the course progression.
 
 ## Repository Structure and Contents
 
